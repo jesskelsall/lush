@@ -1,0 +1,10 @@
+@import "./functions/hue-color";
+
+body {
+  --hue: 0; // Default value
+}
+
+#app {
+  height: 100%;
+  color: hue-color(20%);
+}

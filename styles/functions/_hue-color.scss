@@ -1,0 +1,4 @@
+// Create a shade of the page's hue
+@function hue-color($luminosity, $saturation: 100%) {
+  @return hsl(var(--hue), $saturation, $luminosity);
+}

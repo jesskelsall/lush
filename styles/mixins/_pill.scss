@@ -1,0 +1,23 @@
+@import "../functions/hue-color";
+
+$pill-background-luminosity: 90%;
+$pill-background-luminosity-hover: 80%;
+$pill-luminosity: 30%;
+
+@mixin pill-outer {
+  background-color: hue-color($pill-background-luminosity);
+  color: hue-color($pill-luminosity);
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background-color: hue-color($pill-background-luminosity-hover);
+  }
+}
+
+@mixin pill-inner {
+  display: block;
+  padding: 1rem 1.5rem;
+}

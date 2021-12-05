@@ -1,0 +1,23 @@
+@import "../../styles/functions/hue-color";
+
+.header {
+  padding: 0.25em 0;
+  background-color: hue-color(95%);
+  color: hue-color(30%);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.avatar {
+  border-radius: 25px;
+}
+
+.title {
+  margin-left: 0.5em;
+}

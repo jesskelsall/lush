@@ -1,0 +1,26 @@
+@import "../../styles/mixins/pill";
+
+$button-background-color: hue-color($pill-background-luminosity, 0%);
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.button {
+  @include pill-outer;
+  @include pill-inner;
+
+  &--disabled {
+    @extend .button;
+
+    background-color: $button-background-color;
+    color: hue-color($pill-luminosity, 0%);
+
+    &:hover {
+      background-color: $button-background-color;
+      cursor: pointer;
+    }
+  }
+}

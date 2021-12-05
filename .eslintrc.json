@@ -1,10 +1,14 @@
 {
+  "env": {
+    "jest/globals": true
+  },
   "extends": [
     "airbnb",
     "next"
   ],
   "plugins": [
     "import",
+    "jest",
     "testing-library"
   ],
   "root": true,
@@ -17,7 +21,11 @@
       ],
       "extends": [
         "plugin:testing-library/react"
-      ]
+      ],
+      "rules": {
+        "testing-library/no-node-access": "warn",
+        "testing-library/render-result-naming-convention": "off"
+      }
     }
   ],
   "rules": {
@@ -34,11 +42,11 @@
       "ignorePackages",
       {
         "js": "never",
-        "ts": "never",
-        "tsx": "never"
+        "jsx": "never"
       }
     ],
     "import/prefer-default-export": "off",
+    "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "no-console": [
@@ -63,6 +71,7 @@
     ],
     "react/jsx-filename-extension": "error",
     "react/jsx-fragments": "off",
+    "react/jsx-props-no-spreading": "warn",
     "semi": [
       "error",
       "never"
