@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from './index.module.css'
+import styles from './index.module.scss'
 
 const Home = () => (
   <div className={styles.container}>
@@ -11,11 +11,15 @@ const Home = () => (
 
     <main>
       <h1 className={styles.title}>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
+        Welcome to
+        {' '}
+        <a href="https://nextjs.org">Next.js!</a>
       </h1>
 
       <p className={styles.description}>
-        Get started by editing <code>pages/index.js</code>
+        Get started by editing
+        {' '}
+        <code>pages/index.js</code>
       </p>
 
       <div className={styles.grid}>
@@ -50,7 +54,8 @@ const Home = () => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by{' '}
+        Powered by
+        {' '}
         <span className={styles.logo}>
           <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
         </span>
