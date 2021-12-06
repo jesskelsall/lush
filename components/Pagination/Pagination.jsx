@@ -1,17 +1,15 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import styles from './Pagination.module.scss'
+import { pageInfoType } from '../../propTypes'
 
-const Pagination = ({
-  baseUrl,
-  endCursor,
-  hasNextPage,
-  hasPreviousPage,
-  startCursor,
-}) => {
+// Next and previous page controls
+// Use the pagination cursor to form query strings to modify the page content
+const Pagination = ({ baseUrl, pageInfo }) => {
   const buttonStyle = styles.button
   const disabledButtonStyle = styles['button--disabled']
 
+  // DRY function as both buttons are very similar
   const renderButton = ({
     cursor, enabled, relation, text,
   }) => (enabled
@@ -26,14 +24,14 @@ const Pagination = ({
   return (
     <footer className={styles.pagination}>
       {renderButton({
-        cursor: startCursor,
-        enabled: hasPreviousPage,
+        cursor: pageInfo.startCursor,
+        enabled: pageInfo.hasPreviousPage,
         relation: 'before',
         text: '\u2190 Previous',
       })}
       {renderButton({
-        cursor: endCursor,
-        enabled: hasNextPage,
+        cursor: pageInfo.endCursor,
+        enabled: pageInfo.hasNextPage,
         relation: 'after',
         text: 'Next \u2192',
       })}
@@ -43,17 +41,7 @@ const Pagination = ({
 
 Pagination.propTypes = {
   baseUrl: PropTypes.string.isRequired,
-  endCursor: PropTypes.string,
-  hasNextPage: PropTypes.bool,
-  hasPreviousPage: PropTypes.bool,
-  startCursor: PropTypes.string,
-}
-
-Pagination.defaultProps = {
-  endCursor: null,
-  hasNextPage: false,
-  hasPreviousPage: false,
-  startCursor: null,
+  pageInfo: pageInfoType.isRequired,
 }
 
 export default Pagination

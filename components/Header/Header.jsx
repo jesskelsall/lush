@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './Header.module.scss'
 
+// A header bar for use on all pages
 const Header = () => (
   <header className={styles.header}>
     <div className={cn('content', styles.content)}>

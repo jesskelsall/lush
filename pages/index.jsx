@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client'
 import cn from 'classnames'
 import Head from 'next/head'
+import { categoriesType } from '../propTypes'
 import Categories from '../components/Categories/Categories'
 import apolloClient from '../utils/apollo'
 import styles from './index.module.scss'
@@ -39,5 +40,9 @@ const HomePage = ({ categories }) => (
     </div>
   </div>
 )
+
+HomePage.propTypes = {
+  categories: categoriesType.isRequired,
+}
 
 export default HomePage

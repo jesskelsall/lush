@@ -1,72 +1,36 @@
-import { gql } from '@apollo/client'
 import PropTypes from 'prop-types'
 import Pagination from '../../components/Pagination/Pagination'
 import JSONString from '../../components/JSONString/JSONString'
 import apolloClient from '../../utils/apollo'
 import styles from './[categorySlug].module.scss'
+import { gridProductsType, pageInfoType } from '../../propTypes'
+import GridProduct from '@/components/GridProduct/GridProduct'
+import { PRODUCTS_PER_PAGE, QUERY_CATEGORY_AFTER, QUERY_CATEGORY_BEFORE } from '../../queries/category'
 
 export const getServerSideProps = async (context) => {
-  const { categorySlug } = context.query
+  const { after, before, categorySlug } = context.query
 
   const client = apolloClient()
   const { data } = await client.query({
-    query: gql`
-    {
-      category(slug: "${categorySlug}"){
-        name
-        description
-        products(channel: "uk", first: 16){
-          edges{
-            node{
-              id
-              name
-              rating
-              thumbnail{
-                url
-                alt
-              }
-              pricing{
-                priceRangeUndiscounted{
-                  start{
-                    net{
-                      currency
-                      amount
-                    }
-                  }
-                }
-              }
-            }
-          }
-          pageInfo{
-            hasNextPage
-            hasPreviousPage
-            startCursor
-            endCursor
-          }
-        }
-      }
-    }
-    `,
+    query: before ? QUERY_CATEGORY_BEFORE : QUERY_CATEGORY_AFTER,
+    variables: {
+      after,
+      before,
+      categorySlug,
+      productsCount: PRODUCTS_PER_PAGE,
+    },
   })
 
   const { description, name } = data.category
-  const {
-    endCursor,
-    hasNextPage,
-    hasPreviousPage,
-    startCursor,
-  } = data.category.products.pageInfo
+  const { edges, pageInfo } = data.category.products
 
   return {
     props: {
       categorySlug,
       description,
-      endCursor,
-      hasNextPage,
-      hasPreviousPage,
       name,
-      products: data.category.products.edges,
-      startCursor,
+      products: edges,
+      pageInfo,
     },
   }
 }
@@ -74,11 +38,9 @@ export const getServerSideProps = async (context) => {
 const CategoryPage = ({
   categorySlug,
   description,
-  endCursor,
-  hasNextPage,
-  hasPreviousPage,
   name,
-  startCursor,
+  pageInfo,
+  products,
 }) => (
   <div className="content">
     <div className={styles.category}>
@@ -87,12 +49,12 @@ const CategoryPage = ({
         <JSONString json={description} />
       </div>
     </div>
+    <div className={styles.grid}>
+      {products.map((product) => <GridProduct key={product.node.slug} product={product} />)}
+    </div>
     <Pagination
       baseUrl={`/category/${categorySlug}`}
-      endCursor={endCursor}
-      hasNextPage={hasNextPage}
-      hasPreviousPage={hasPreviousPage}
-      startCursor={startCursor}
+      pageInfo={pageInfo}
     />
   </div>
 )
@@ -100,17 +62,13 @@ const CategoryPage = ({
 CategoryPage.propTypes = {
   categorySlug: PropTypes.string.isRequired,
   description: PropTypes.string,
-  endCursor: PropTypes.string,
-  hasNextPage: PropTypes.bool.isRequired,
-  hasPreviousPage: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
-  startCursor: PropTypes.string,
+  pageInfo: pageInfoType.isRequired,
+  products: gridProductsType.isRequired,
 }
 
 CategoryPage.defaultProps = {
   description: null,
-  startCursor: '',
-  endCursor: '',
 }
 
 export default CategoryPage

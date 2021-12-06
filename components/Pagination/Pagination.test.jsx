@@ -4,10 +4,12 @@ import Pagination from './Pagination'
 
 const defaultProps = {
   baseUrl: '/category/bath-bombs',
-  endCursor: '987',
-  hasNextPage: true,
-  hasPreviousPage: true,
-  startCursor: '123',
+  pageInfo: {
+    endCursor: '987',
+    hasNextPage: true,
+    hasPreviousPage: true,
+    startCursor: '123',
+  },
 }
 
 const buttonText = {
@@ -42,14 +44,18 @@ describe('Pagination component', () => {
   })
 
   it('renders no link when there is no previous page', () => {
-    const screen = renderPagination({ ...defaultProps, hasPreviousPage: false })
+    const props = defaultProps
+    props.pageInfo.hasPreviousPage = false
+    const screen = renderPagination(props)
 
     const previous = screen.getByText(buttonText.previous)
     expect(previous).not.toHaveAttribute('href')
   })
 
   it('renders no link when there is no next page', () => {
-    const screen = renderPagination({ ...defaultProps, hasNextPage: false })
+    const props = defaultProps
+    props.pageInfo.hasNextPage = false
+    const screen = renderPagination(props)
 
     const next = screen.getByText(buttonText.next)
     expect(next).not.toHaveAttribute('href')

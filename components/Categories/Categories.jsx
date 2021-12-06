@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import styles from './Categories.module.scss'
+import { categoriesType } from '../../propTypes'
 
 // Displays a list of categories that can be clicked on to view its products
 const Categories = ({ categories }) => (
@@ -16,14 +17,7 @@ const Categories = ({ categories }) => (
 )
 
 Categories.propTypes = {
-  categories: PropTypes.arrayOf(
-    PropTypes.shape({
-      node: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired,
-      }).isRequired,
-    }),
-  ).isRequired,
+  categories: categoriesType.isRequired,
 }
 
 export default Categories

@@ -23,6 +23,7 @@
         "plugin:testing-library/react"
       ],
       "rules": {
+        "testing-library/no-container": "warn",
         "testing-library/no-node-access": "warn",
         "testing-library/render-result-naming-convention": "off"
       }
