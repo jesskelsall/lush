@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { cleanup, render } from '@testing-library/react'
-import { categoriesStub } from '../../_stubs/categories'
+import { categoriesStub } from '../../_stubs'
 import Categories from './Categories'
 
 const { edges } = categoriesStub.data.categories

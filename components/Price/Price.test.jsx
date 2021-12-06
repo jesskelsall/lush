@@ -45,7 +45,7 @@ describe('Price component', () => {
     expect(screen.getByText('NOK 5.00')).toBeVisible()
   })
 
-  describe('currencies', () => {
+  describe('Currencies', () => {
     // Iterate through each supported currency, performing a test for each
     test.each(currencyTests)('renders %s as %s', (currencyCode, currencySymbol) => {
       const screen = renderPrice(buildProps(currencyCode, 2.5))

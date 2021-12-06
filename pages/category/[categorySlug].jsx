@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
-import Pagination from '../../components/Pagination/Pagination'
+import GridProduct from '../../components/GridProduct/GridProduct'
 import JSONString from '../../components/JSONString/JSONString'
+import Pagination from '../../components/Pagination/Pagination'
+import { gridProductsType, pageInfoType } from '../../propTypes'
+import { PRODUCTS_PER_PAGE, QUERY_CATEGORY_AFTER, QUERY_CATEGORY_BEFORE } from '../../queries/category'
 import apolloClient from '../../utils/apollo'
 import styles from './[categorySlug].module.scss'
-import { gridProductsType, pageInfoType } from '../../propTypes'
-import GridProduct from '@/components/GridProduct/GridProduct'
-import { PRODUCTS_PER_PAGE, QUERY_CATEGORY_AFTER, QUERY_CATEGORY_BEFORE } from '../../queries/category'
 
 export const getServerSideProps = async (context) => {
   const { after, before, categorySlug } = context.query

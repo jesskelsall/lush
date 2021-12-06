@@ -1,7 +1,10 @@
 import { categoriesType } from './categories'
+import { gridProductsType, gridProductType } from './gridProducts'
 import { pageInfoType } from './pageInfo'
-import { gridProductType, gridProductsType } from './gridProducts'
 
 export {
-  categoriesType, gridProductType, gridProductsType, pageInfoType,
+  categoriesType,
+  gridProductsType,
+  gridProductType,
+  pageInfoType,
 }

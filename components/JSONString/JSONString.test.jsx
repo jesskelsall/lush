@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { cleanup, render } from '@testing-library/react'
 import JSONString from './JSONString'
-import { paragraphStub } from '../../_stubs/jsonString'
+import { paragraphStub } from '../../_stubs'
 
 afterEach(cleanup)
 

@@ -1,26 +1,15 @@
-import { gql } from '@apollo/client'
 import cn from 'classnames'
 import Head from 'next/head'
-import { categoriesType } from '../propTypes'
 import Categories from '../components/Categories/Categories'
+import { categoriesType } from '../propTypes'
+import { QUERY_CATEGORIES } from '../queries/categories'
 import apolloClient from '../utils/apollo'
 import styles from './index.module.scss'
 
 export const getServerSideProps = async () => {
   const client = apolloClient()
   const { data } = await client.query({
-    query: gql`
-      {
-        categories(first: 12, level: 1){
-          edges{
-            node {
-              name
-              slug
-            }
-          }
-        }
-      }
-    `,
+    query: QUERY_CATEGORIES,
   })
 
   return { props: { categories: data.categories.edges } }

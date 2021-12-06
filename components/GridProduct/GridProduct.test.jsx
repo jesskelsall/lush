@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { cleanup, render } from '@testing-library/react'
-import { gridProductStub } from '../../_stubs/gridProducts'
+import { gridProductStub } from '../../_stubs'
 import GridProduct from './GridProduct'
 
 afterEach(cleanup)
