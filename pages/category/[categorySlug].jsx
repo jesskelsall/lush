@@ -21,6 +21,7 @@ export const getServerSideProps = async (context) => {
     },
   })
 
+  // Unpack the response into separate props that will be passed to other components
   const { description, name } = data.category
   const { edges, pageInfo } = data.category.products
 
@@ -35,6 +36,7 @@ export const getServerSideProps = async (context) => {
   }
 }
 
+// Lists products belonging to the chosen category
 const CategoryPage = ({
   categorySlug,
   description,
@@ -43,12 +45,15 @@ const CategoryPage = ({
   products,
 }) => (
   <div className="content">
+    {/* Category details */}
     <div className={styles.category}>
       <h1 className={styles.title}>{name}</h1>
       <div className={styles.description}>
         <JSONString json={description} />
       </div>
     </div>
+
+    {/* Products grid */}
     <div className={styles.grid}>
       {products.map((product) => <GridProduct key={product.node.slug} product={product} />)}
     </div>

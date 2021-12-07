@@ -9,7 +9,7 @@ const buildCategoryQuery = (queryName, queryVariables, productsArguments) => gql
     $categorySlug: String!,
     $productsCount: Int!,
     ${queryVariables}
-  ) {
+  ){
     category(slug: $categorySlug){
       name
       description

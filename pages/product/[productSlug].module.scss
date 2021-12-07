@@ -1,0 +1,82 @@
+@import "../../styles/mixins/rounded";
+@import "../../styles/functions/hue-color";
+
+.top {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+
+.details {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.name {
+  font-size: 2.5rem;
+  margin: 1rem 0 2rem;
+}
+
+.category {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.priceLine {
+  margin-top: 2rem;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.5rem;
+
+  + .weight {
+    margin-left: 1rem;
+  }
+}
+
+.weight {
+  color: hue-color(50%, 25%);
+}
+
+.image {
+  @include rounded;
+
+  flex: 2;
+  height: 500px;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.bottom {
+  margin-top: 2rem;
+}
+
+.collections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid-gap: 1em;
+  margin: 2rem 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.collection {
+  @include rounded;
+
+  padding: 0.25rem 1rem;
+  border: 2px solid hue-color(90%);
+  font-size: 1.25rem;
+}
+
+.description {
+  margin: 2rem 0;
+
+  s {
+    text-decoration: none;
+    color: hue-color(40%);
+  }
+}

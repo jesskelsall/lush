@@ -1,18 +1,15 @@
 import PropTypes from 'prop-types'
+import { categoryType } from './category'
+import { mediaType } from './media'
 import { pricingType } from './pricing'
 
 export const gridProductType = PropTypes.shape({
   node: PropTypes.shape({
     name: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
-    category: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }),
+    category: categoryType,
     rating: PropTypes.number,
-    thumbnail: PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      alt: PropTypes.string,
-    }),
+    thumbnail: mediaType,
     pricing: pricingType,
   }).isRequired,
 })

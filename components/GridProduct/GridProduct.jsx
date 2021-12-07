@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { gridProductType } from '../../propTypes'
-import Price from '../Price/Price'
+import { formatPrice } from '../../utils/price'
 import Rating from '../Rating/Rating'
 import styles from './GridProduct.module.scss'
 
 // Display a single product for use in a grid
 const GridProduct = ({ product }) => (
-  <Link href={`/products/${product.node.slug}`}>
+  <Link href={`/product/${product.node.slug}`}>
     <a className={styles.product}>
       {/* Thumbnail */}
       <div className={styles.thumbnail}>
@@ -31,7 +31,7 @@ const GridProduct = ({ product }) => (
       <div className={styles.footer}>
         <div>
           {product.node.pricing && (
-            <Price pricing={product.node.pricing} />
+            <span>{formatPrice(product.node.pricing)}</span>
           )}
         </div>
         {typeof product.node.rating === 'number' && (

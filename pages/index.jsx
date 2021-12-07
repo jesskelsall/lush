@@ -15,6 +15,7 @@ export const getServerSideProps = async () => {
   return { props: { categories: data.categories.edges } }
 }
 
+// The landing page where a category of products is selected
 const HomePage = ({ categories }) => (
   <div className={cn('content', styles.content)}>
     <Head>

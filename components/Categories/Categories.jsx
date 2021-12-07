@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import PropTypes from 'prop-types'
-import styles from './Categories.module.scss'
 import { categoriesType } from '../../propTypes'
+import styles from './Categories.module.scss'
 
 // Displays a list of categories that can be clicked on to view its products
 const Categories = ({ categories }) => (
