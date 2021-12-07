@@ -1,4 +1,6 @@
 @import "../../styles/breakpoints";
+@import "../../styles/mixins/rounded";
+@import "../../styles/mixins/pill";
 
 .category {
   text-align: center;
@@ -10,6 +12,31 @@
 
 .description {
   font-weight: bold;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  margin: 2rem 0;
+
+  @media (min-width: $breakpoint-sm) {
+    justify-content: flex-end;
+  }
+}
+
+.sort {
+  @include pill-outer;
+  @include pill-inner;
+
+  font-size: 1.25rem;
+  appearance: none;
+  border: none;
+  outline-color: transparent;
+  outline-width: 2px;
+
+  &:focus-visible {
+    outline-color: hue-color($pill-luminosity);
+  }
 }
 
 .grid {
