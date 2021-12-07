@@ -1,3 +1,4 @@
+@import "../../styles/breakpoints";
 @import "../../styles/functions/hue-color";
 @import "../../styles/mixins/rounded";
 
@@ -18,8 +19,11 @@
 
 .thumbnail {
   display: flex;
-  justify-content: center;
   min-height: 125px;
+
+  @media (min-width: $breakpoint-sm) {
+    justify-content: center;
+  }
 }
 
 .name {

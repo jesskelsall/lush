@@ -1,4 +1,14 @@
+@import "./breakpoints";
+
+$content-breakpoints: $breakpoint-sm, $breakpoint-md, $breakpoint-lg;
+
 .content {
-  max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 2rem;
+
+  @each $breakpoint in $content-breakpoints {
+    @media (min-width: $breakpoint) {
+      margin: 0 auto;
+      max-width: $breakpoint - 40px;
+    }
+  }
 }

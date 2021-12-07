@@ -1,3 +1,5 @@
+@import "../../styles/breakpoints";
+
 .category {
   text-align: center;
 }
@@ -15,6 +17,18 @@
   flex-direction: row;
   flex-wrap: wrap;
   grid-gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   margin: 2rem 0;
+
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
